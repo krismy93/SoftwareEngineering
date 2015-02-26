@@ -4,32 +4,31 @@
      <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart', 'controls']}]}"></script>
 <script src="chart.js"></script>
+<script src="buttons.js"></script></script>
        <div id="programmatic_dashboard_div" style="border: 1px solid #ccc">
-      <table class="columns">
-        <tr>
-            <td>
-                <div id="programmatic_chart_div"></div>
-            </td>
-          <td>
-            <div id="programmatic_control_div" style="padding-left: 2em; min-width: 250px"></div>
-            <div>
-              <button style="margin: 1em 1em 1em 2em" onclick="changeRange();">
-                Select range [1960, 1970]
-              </button><br />
+               <table class="columns">
+                   <tr>
+                       <td>
+                           <div id="programmatic_chart_div"></div>
+                       </td>
+                       <td>
+                           <div id="programmatic_control_div" style="padding-right: 1em; min-width: 250px"></div>
+                       
+                           
+                       
+                           <div>
+                               <button style="margin: 1em 1em 1em 1em" onclick="changeRange();">
+                                   Select range [1960, 1970]
+                               </button><br />
 
-            </div>
-            <script type="text/javascript">
-              function changeRange() {
-                programmaticSlider.setState({'lowValue': 1960  , 'highValue': 1970});
-                programmaticSlider.draw();
-              }
+                           </div>
 
-            </script>
-          </td>
+                           <div id="dropdown_control_div"></div>
+                       </td>
 
-        </tr>
-      </table>
-    </div>
+                   </tr>
+               </table>
+           </div>
    
 </body>
 </html>
