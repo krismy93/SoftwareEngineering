@@ -14,7 +14,11 @@ function drawChart() {
     programmaticSlider = new google.visualization.ControlWrapper({
         'controlType': 'NumberRangeFilter',
         'containerId': 'programmatic_control_div',
+        'lowValue': '1960',
+        'highValue': '2012',
         'options': {
+            'minValue': 1960,
+            'maxvalue': 2012,
             'filterColumnLabel': 'Year',
             'ui': {
                 'labelStacking': 'vertical' , 'format': { 'pattern':'####', 'fractionDigits':'0', 'groupingSymbol':'','showRangeValues':true }}
@@ -24,30 +28,33 @@ function drawChart() {
 
 
     // Define a category picker control for the State 
-    var statePicker = new google.visualization.ControlWrapper({
+    statePicker = new google.visualization.ControlWrapper({
         'controlType': 'CategoryFilter',
         'containerId': 'dropdown_control_div',
         'options': {
             'filterColumnLabel': 'State',
-        'ui': {
+            'ui': {
                 'labelStacking': 'vertical',
                 'allowTyping': false,
                 'allowMultiple': false,
-                height: 100
+                'allowNone': false,
+                'cssClass': "style.css"
             }
         },
-        'state': { 'selectedValue': ['Florida'] }
+       'state': { 'selectedValue': ['Alabama'] }
     });
 
     //create column chart that will be used to show the data
     programmaticChart = new google.visualization.ChartWrapper({
         'chartType': 'ColumnChart',
         'containerId': 'programmatic_chart_div',
-        'view': {columns:[0,1]},
+        'view': { columns: [1, 2] },
+
         'options': {
             'ui': { 'format': { 'pattern': '####', 'groupingSymbol': '', 'fractionDigits': '0' } },
-            'width': 1000,
-            'height': 600,
+            
+            'width': 850,
+            'height': 500,
             'legend': 'none',
             'chartArea': {
                 'left': 50,
@@ -58,44 +65,27 @@ function drawChart() {
 
            
             'title': 'Crime in United States',
-           "vAxis": { "title": "Rate per 100,000 people", 'showTextEvery': 1 },
-           "hAxis": { "title": "Year", 'slantedText': 'true', 'showTextEvery': 1, format: '####' }
+            "vAxis": { "title": "Rate per 100,000 people", 'minValue': '0', 'showEveryText': 1 },
+            "hAxis": {
+                "title": "Year", 'slantedText': 'true',
+                'gridlines': { color: 'transparent' },
+                'viewWindow.min': 2,
+                'showEveryText': 1, format: '####'
+            }
         }
     });
 
-  //call the initalize function
-    initalize();
+    //call the initalize function
+    initalize(dashboard);
 
    
     //binds everything to the dashboard
     dashboard.bind(programmaticSlider, programmaticChart);
     dashboard.bind(statePicker, programmaticChart);
 
-    //initalize: will be used to query the database
-    function initalize() {
-        var chosenState = "'Oregon'";
-        var mainQuery = "SELECT Year,'Murder Rate', State FROM 1xczkhUb6IZxlt4xqLDVRcR_mWa2zbhSHzDYnx7O9";
-        
-        var opts = { sendMethod: 'auto' };
-        var query = new google.visualization.Query('https://www.google.com/fusiontables/gvizdata?tq=', opts);
-        query.setQuery(mainQuery);
-        query.send(handleQueryResponse);
-    }
 
- 
-    //handleQueryResponse: will be used to double check the query we created
-    function handleQueryResponse(response) {
-        //check to see if something is wrong, if there is, have a pop up
-        if (response.isError()) {
-            alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-            return;
-        }
 
-        //this sets the data and has it draw
-        var data = response.getDataTable();
-        
-        dashboard.draw(data);
-    }
+
    
 
 }
