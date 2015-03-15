@@ -2,9 +2,20 @@
 <html>
 <head lang="en">
      <!--Load the AJAX API-->
+<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="buttons.js"></script>
+    <script src="data.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart', 'controls']}]}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script src="jquery.csv-0.71.js"></script>
 <script src="chart.js"></script>
-<script src="buttons.js"></script></script>
+
+    <style type="text/css">
+        dropdown_control_div {
+            overflow: scroll;
+            max-height: 200px;
+        }
+    </style>
        <div id="programmatic_dashboard_div" style="border: 1px solid #ccc">
                <table class="columns">
                    <tr>
@@ -14,11 +25,10 @@
                        <td>
                            <div id="programmatic_control_div" style="padding-right: 1em; min-width: 250px"></div>
                        
-                           
-                       
+                        
                            <div>
                                <button style="margin: 1em 1em 1em 1em" onclick="changeRange();">
-                                   Select range [1960, 1970]
+                                   Change Rate
                                </button><br />
 
                            </div>
