@@ -3,51 +3,28 @@
 google.setOnLoadCallback(drawChart);
 
 
-
-
+/**
+*drawChart()
+*
+*creates the dashboard along with all the elements of the chart
+*its also initalizing the chart with data
+*The chart will be first intialized with the Murder Rate in Alabama
+*/
 function drawChart() {
     //create the dashboard that we will use for all the stuff
     var dashboard = new google.visualization.Dashboard(
-    document.getElementById('programmatic_dashboard_div'));
+    document.getElementById('dashboard_div'));
 
-    //create the slider that we will be using to move through the years
-    programmaticSlider = new google.visualization.ControlWrapper({
-        'controlType': 'NumberRangeFilter',
-        'containerId': 'programmatic_control_div',
-        'lowValue': '1960',
-        'highValue': '2012',
-        'options': {
-            'minValue': 1960,
-            'maxvalue': 2012,
-            'filterColumnLabel': 'Year',
-            'ui': {
-                'labelStacking': 'vertical' , 'format': { 'pattern':'####', 'fractionDigits':'0', 'groupingSymbol':'','showRangeValues':true }}
-            
-        }
-    });
+    //initialize the slider
+    initYearSelector();
 
-
-    // Define a category picker control for the State 
-    statePicker = new google.visualization.ControlWrapper({
-        'controlType': 'CategoryFilter',
-        'containerId': 'dropdown_control_div',
-        'options': {
-            'filterColumnLabel': 'State',
-            'ui': {
-                'labelStacking': 'vertical',
-                'allowTyping': false,
-                'allowMultiple': false,
-                'allowNone': false,
-                'cssClass': "style.css"
-            }
-        },
-       'state': { 'selectedValue': ['Alabama'] }
-    });
+    //intialize the drop down menu
+    initStatePicker();
 
     //create column chart that will be used to show the data
-    programmaticChart = new google.visualization.ChartWrapper({
+    colChart = new google.visualization.ChartWrapper({
         'chartType': 'ColumnChart',
-        'containerId': 'programmatic_chart_div',
+        'containerId': 'chart_div',
         'view': { columns: [1, 2] },
 
         'options': {
@@ -64,7 +41,7 @@ function drawChart() {
             },
 
            
-            'title': 'Crime in United States',
+            'title': "Murder Rate in " + statePicker.getState().selectedValue ,
             "vAxis": { "title": "Rate per 100,000 people", 'minValue': '0', 'showEveryText': 1 },
             "hAxis": {
                 "title": "Year", 'slantedText': 'true',
@@ -75,17 +52,25 @@ function drawChart() {
         }
     });
 
-    //call the initalize function
+
+
+    //initalizing the data for the dashboard from data.js
     initalize(dashboard);
 
    
     //binds everything to the dashboard
-    dashboard.bind(programmaticSlider, programmaticChart);
-    dashboard.bind(statePicker, programmaticChart);
+    dashboard.bind(yearSelector, colChart);
+    dashboard.bind(statePicker, colChart);
 
 
+    //EVENT LISTENER
+    //used to detect a stateChange, this will update the title of the chart
+    google.visualization.events.addListener(statePicker, 'statechange', function () {
+ 
+        var state = statePicker.getState();
+        colChart.title = "Murder Rate in " + state.selectedValue;
+    });
 
 
-   
-
+  
 }
