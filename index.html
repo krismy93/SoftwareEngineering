@@ -9,13 +9,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script src="jquery.csv-0.71.js"></script>
 <script src="chart.js"></script>
-
-    <style type="text/css">
-        dropdown_control_div {
-            overflow: scroll;
-            max-height: 200px;
-        }
-    </style>
+</head>
+<body>
        <div id="programmatic_dashboard_div" style="border: 1px solid #ccc">
                <table class="columns">
                    <tr>
@@ -27,8 +22,14 @@
                        
                         
                            <div>
-                               <button style="margin: 1em 1em 1em 1em" onclick="changeRange();">
-                                   Change Rate
+                               <br />
+                               Select rate to display:
+                               <br/>
+                               <button style="margin: 1em 1em 1em 1em" onclick="changeToMurder();">
+                                   Murder Rate
+                               </button>
+                               <button style="margin: 1em 1em 1em 1em" onclick="changeToRobbery();">
+                                   Robbery Rate
                                </button><br />
 
                            </div>
