@@ -63,14 +63,15 @@ function drawChart() {
     dashboard.bind(statePicker, colChart);
 
 
-    //EVENT LISTENER
+    //EVENT LISTENERS
     //used to detect a stateChange, this will update the title of the chart
     google.visualization.events.addListener(statePicker, 'statechange', function () {
- 
-        var state = statePicker.getState();
-        colChart.title = "Murder Rate in " + state.selectedValue;
+        var currTitle = colChart.getOption('title');
+        var shownRate = currTitle.split('in')[0];
+        var selected = statePicker.getState();
+        var selectState = selected.selectedValues[0];
+        colChart.setOption('title', shownRate + 'in ' + selectState);
+        colChart.draw();
     });
-
-
   
 }

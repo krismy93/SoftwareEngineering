@@ -3,11 +3,14 @@
 *
 *called when the Robbery Rate Button is pressed
 *Data for column chart now displays Robbery Rate for each state
-*
+*Title is also updated accordingly
 */
 function changeToRobbery() {
     var columns = '{ "columns": [1, 3] }';
     colChart.setView(columns);
+    var currTitle = colChart.getOption('title');
+    var shownState = currTitle.split('Rate')[1];
+    colChart.setOption('title', "Robbery Rate " + shownState);
     colChart.draw();
     
 }
@@ -18,12 +21,15 @@ function changeToRobbery() {
 *
 *called when the Murder Rate Button is pressed
 *Data for column chart now displays Murder Rate for each state
-*
+*Title is also updated accordingly
 */
 function changeToMurder() {
     var columns = '{ "columns": [1, 2] }';
     colChart.setView(columns);
+    var currTitle = colChart.getOption('title');
+    var shownState = currTitle.split('Rate')[1];
 
+    colChart.setOption('title', "Murder Rate " + shownState);
     colChart.draw();
 
 }
