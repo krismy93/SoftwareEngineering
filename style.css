@@ -1,4 +1,9 @@
-﻿
+﻿/* style.css */
+
+body {background-color: #999; font-family: impact; }
+
+#dashboard_div { border: 1px solid #ccc; }
+
+#year_control_div { padding-right: 1em; min-width: 250px }
 
 .charts-menu {overflow-y:scroll; max-height:100px}
-
