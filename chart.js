@@ -30,6 +30,8 @@ function drawChart() {
         'options': {
             'ui': { 'format': { 'pattern': '####', 'groupingSymbol': '', 'fractionDigits': '0' } },
             
+			'backgroundColor': { fill:'transparent' },
+
             'width': 850,
             'height': 500,
             'legend': 'none',

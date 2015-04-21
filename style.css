@@ -1,4 +1,11 @@
-﻿
+﻿/* style.css */
+
+* { font-family: Agency FB; font-size:16pt; }
+
+body { background-color: #aaa; }
+
+#dashboard_div { padding: 70px }
+
+#year_control_div { padding-right: 1em; min-width: 250px }
 
 .charts-menu {overflow-y:scroll; max-height:100px}
-
