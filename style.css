@@ -1,8 +1,10 @@
 ﻿/* style.css */
 
-body {background-color: #999; font-family: impact; }
+* { font-family: Agency FB; font-size:16pt; }
 
-#dashboard_div { border: 1px solid #ccc; }
+body { background-color: #aaa; }
+
+#dashboard_div { padding: 70px }
 
 #year_control_div { padding-right: 1em; min-width: 250px }
 
