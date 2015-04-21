@@ -1,10 +1,16 @@
 ﻿/* style.css */
 
-* { font-family: Agency FB; font-size:16pt; }
+* { font-family: Agency FB; }
 
 body { background-color: #aaa; }
 
-#dashboard_div { padding: 70px }
+h1{ padding-left: 70px; padding-top: 30px }
+
+h3{ padding-left: 70px }
+
+button{ font-size: 16pt; margin: 1em 1em 1em 1em }
+
+#dashboard_div { padding-left: 70px; padding-right: 70px; padding-top: 40px; font-size: 16pt }
 
 #year_control_div { padding-right: 1em; min-width: 250px }
 

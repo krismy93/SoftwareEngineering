@@ -41,8 +41,9 @@ function drawChart() {
                 'right': 0,
                 'bottom': 0
             },
-
-           
+			
+			'fontSize': 19,
+		   
             'title': "Murder Rate in " + statePicker.getState().selectedValue ,
             "vAxis": { "title": "Rate per 100,000 people", 'minValue': '0', 'showEveryText': 1 },
             "hAxis": {
