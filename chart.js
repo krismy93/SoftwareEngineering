@@ -32,15 +32,9 @@ function drawChart() {
             
 			'backgroundColor': { fill:'transparent' },
 
-            'width': 850,
-            'height': 500,
+            'width': 825,
+            'height': 450,
             'legend': 'none',
-            'chartArea': {
-                'left': 50,
-                'top': 30,
-                'right': 0,
-                'bottom': 0
-            },
 			
 			'fontSize': 19,
 		   
